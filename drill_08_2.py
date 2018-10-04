@@ -15,15 +15,8 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
 
-def draw_line(p1, p2):
-    global x, y
-
-    for i in range(0, 100 + 1, 2):
-        t = i / 100
-        x = (1 - t) * p1[0] + t * p2[0]
-        y = (1 - t) * p1[1] + t * p2[1]
-
-
+def draw_line(p1, p2, p3):
+    pass
 
 open_canvas(KPU_WIDTH, KPU_HEIGHT)
 kpu_ground = load_image('KPU_GROUND.png')
@@ -48,9 +41,10 @@ while running:
 
     p1 = points[n-1]
     p2 = points[n]
+    p3 = points[n+1]
     n = (n + 1) % size
 
-    draw_line(p1, p2)
+    draw_line(p1, p2, p3)
 
     frame = (frame + 1) % 8
 
