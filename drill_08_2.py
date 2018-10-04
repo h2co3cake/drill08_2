@@ -16,7 +16,7 @@ def handle_events():
             running = False
 
 def draw_character(x, y, LR):
-    global  frame
+    global frame
 
     clear_canvas()
     kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
