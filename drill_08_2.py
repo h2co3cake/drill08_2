@@ -16,7 +16,20 @@ def handle_events():
             running = False
 
 def draw_line(p1, p2, p3):
-    pass
+    global x, y
+    global LR
+
+    if p1[0] < p2[0] :
+        LR = 1
+
+    elif p2[0] < p1[0]:
+        LR = 0
+
+        
+    for i in range(0, 50, 2):
+        t = i / 100
+        x = (2 * t ** 2 - 3 * t + 1) * p1[0] + (-4 * t ** 2 + 4 * t) * p2[0] + (2 * t ** 2 - t) * p3[0]
+        y = (2 * t ** 2 - 3 * t + 1) * p1[1] + (-4 * t ** 2 + 4 * t) * p2[1] + (2 * t ** 2 - t) * p3[1]
 
 open_canvas(KPU_WIDTH, KPU_HEIGHT)
 kpu_ground = load_image('KPU_GROUND.png')
@@ -39,9 +52,10 @@ while running:
     update_canvas()
     handle_events()
 
-    p1 = points[n-1]
-    p2 = points[n]
-    p3 = points[n+1]
+    p1 = points[n-2]
+    p2 = points[n-1]
+    p3 = points[n]
+
     n = (n + 1) % size
 
     draw_line(p1, p2, p3)
